@@ -2,7 +2,6 @@
 Goto Tools nuget package manager -> Packagemanager console
 Search Microsoft.EntityFrameworkCore.SqlServer . Select 2.1.11 version.
 click install
--- changed text
 In Package manager console. execute the following command:
 
 Scaffold-DbContext "Server=192.168.1.102\\SQLEXPRESS01;Database=Student;Trusted_Connection=False; User Id = Test;Password=Test*1234;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
