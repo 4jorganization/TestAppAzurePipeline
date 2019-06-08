@@ -19,4 +19,8 @@ steps:
     command: build
     projects: '**/*.csproj'
     arguments: '--configuration Release' # Update this to match your need
+    zipAfterPublish: True
 - task: PublishBuildArtifacts@1
+
+
+
