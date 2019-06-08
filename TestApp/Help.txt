@@ -1,0 +1,32 @@
+﻿File new -> Project -> API
+Goto Tools nuget package manager -> Packagemanager console
+Search Microsoft.EntityFrameworkCore.SqlServer . Select 2.1.11 version.
+click install
+
+In Package manager console. execute the following command:
+
+Scaffold-DbContext "Server=192.168.1.102\\SQLEXPRESS01;Database=Student;Trusted_Connection=False; User Id = Test;Password=Test*1234;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+
+Comment the code StudentContext.cs
+
+//        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//        {
+//            if (!optionsBuilder.IsConfigured)
+//            {
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Server=192.168.1.102\\SQLEXPRESS01;Database=Student;Trusted_Connection=False; User Id = Test;Password=Test*1234;");
+//            }
+//        }
+
+add the following to appsettings.json
+,"ConnectionStrings": { "StudentDatabase": "Server=192.168.1.102\\SQLEXPRESS01;Database=Student;Trusted_Connection=False; User Id = Test;Password=Test*1234;" }
+
+In startup.cs
+Add
+		var connection = Configuration.GetConnectionString("StudentDatabase");
+		services.AddDbContext<StudentContext>(options => options.UseSqlServer(connection));
+in the following method
+public void ConfigureServices(IServiceCollection services)
+
+Add controller and choose
+API controller with actions using entity framework
