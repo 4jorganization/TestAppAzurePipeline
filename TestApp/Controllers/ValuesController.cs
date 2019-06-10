@@ -14,7 +14,6 @@ namespace TestApp.Controllers
 		[HttpGet]
 		public ActionResult<IEnumerable<string>> Get()
 		{
-			abcde;
 			return new string[] { "One","Two","Three", "Four"};
 		}
 
